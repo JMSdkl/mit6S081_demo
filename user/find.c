@@ -32,13 +32,15 @@ void find(char *curr_path, char *target)
         return;
     }
     // 所以curr_path一定是要一个完整的路径
+
     switch (st.type)
     {            // 文件夹 和文件 分开处理
     case T_FILE: // 如果是文件 那就要找到路径最后一个东西
+        ;
         // root/usr/myfile.s 中的myfile.s 和要找的东西做比较
-        char *file_name = findFileName(curr_path);
+        char *fillname = findFileName(curr_path);
         int match = 1;
-        if (file_name == 0 || strcmp(file_name + 1, target) != 0)
+        if (fillname == 0 || strcmp(fillname + 1, target) != 0)
         {
             match = 0; // 不匹配
         }
@@ -49,6 +51,7 @@ void find(char *curr_path, char *target)
 
     case T_DIR:
         // 如果是文件夹 那就要找这个文件夹下面的所有东西
+        ;
         memset(buf, 0, sizeof(buf)); // 清空
         uint curr_path_len = strlen(curr_path);
         memcpy(buf, curr_path, curr_path_len); // 先获得原来的路径 后面再继续加

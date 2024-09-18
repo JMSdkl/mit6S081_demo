@@ -30,9 +30,9 @@ void runprocess(int listenFd)
             my_num = passed_num;
             printf("prime %d\n", my_num);
         }
-        if (passed_num % my_num != 0)
+        if (passed_num % my_num != 0) // 2%2 ==0不进入 3%2!==0 进入
         {
-            if (!forked)
+            if (!forked) // 创建进程
             {
                 pipe(pipes);
                 forked = 1;
@@ -41,14 +41,14 @@ void runprocess(int listenFd)
                 {
                     close(pipes[1]);
                     close(listenFd);
-                    runprocess(pipes[0]);
+                    runprocess(pipes[0]); // 子进程就一直进入递归
                 }
                 else
                 {
                     close(pipes[0]);
                 }
             }
-            write(pipes[1], &passed_num, 4);
+            write(pipes[1], &passed_num, 4); // 将不能整除的 加入pipe里面
         }
     }
 }

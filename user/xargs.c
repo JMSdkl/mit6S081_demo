@@ -11,6 +11,7 @@ argc 是 xargs后面的 echo bye  前面的是通过管道| 将前面hello too�
 */
 int main(int argc, char *argv[])
 {
+    sleep(10);
     // 要解决的问题：
     // 1：怎么获取前一个命令的标准化输出（即是 xargs这个命令的标准化输入）？
     // 从文件描述符0 读出来的 前一个的标准输出

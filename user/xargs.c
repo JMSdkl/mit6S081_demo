@@ -14,9 +14,9 @@ int main(int argc, char *argv[])
     // 要解决的问题：
     // 1：怎么获取前一个命令的标准化输出（即是 xargs这个命令的标准化输入）？
     // 从文件描述符0 读出来的 前一个的标准输出
-    char buf[buf_size];
-    read(0, buf, buf_size);
-    printf("标准化输入是：%s\n", buf);
+    char buf[MSGSIZE];
+    read(0, buf, MSGSIZE);
+    // printf("标准化输入是：%s\n", buf);
     // 2：如何获得到自己的命令行参数 argv里面
     char *xargv[MSGSIZE];
     int xargc = 0;
